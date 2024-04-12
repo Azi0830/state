@@ -56,15 +56,7 @@ class App extends Component {
             {this.state.data.map((value) => {
               return (
                 <tr key={value.id}>
-                  <td>
-                    {/* {this.state.selevtedColum &&
-                    value.id === this.state.selevtedColum.id ? (
-                      <input type="text" defaultValue={value.no} />
-                    ) : (
-                      value.no
-                    )} */}
-                    {value.no}
-                  </td>
+                  <td>{value.no}</td>
                   <td>
                     {this.state.selevtedColum &&
                     value.id === this.state.selevtedColum.id ? (

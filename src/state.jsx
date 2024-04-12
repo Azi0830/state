@@ -8,33 +8,29 @@ class State extends Component {
       data: [
         {
           id: "1",
-          name: "a",
-          surname: "a",
-          age: "a",
+          name: "azim",
+          surname: "jon",
+          age: "26",
         },
         {
           id: "2",
-          name: "b",
-          surname: "b",
-          age: "b",
+          name: "sardor",
+          surname: "jon",
+          age: "28",
         },
         {
           id: "3",
-          name: "c",
-          surname: "c",
-          age: "c",
+          name: "husan",
+          surname: "khon",
+          age: "25",
         },
       ],
-      selected: null,
     };
   }
+
   render() {
-    const onEdit = (value) => {
-      this.setState({
-        selected: value,
-      });
-      console.log(value);
-      console.log("edit");
+    const onEdit = () => {
+      console.log("editing..");
     };
     return (
       <div className="container">
@@ -51,44 +47,13 @@ class State extends Component {
           <tbody>
             {this.state.data.map((value) => {
               return (
-                <tr key={value.id}>
-                  <tr>{value.id}</tr>
+                <tr>
+                  <td>{value.id}</td>
+                  <td>{value.name}</td>
+                  <td>{value.surname}</td>
+                  <td>{value.age}</td>
                   <td>
-                    {this.state.selected === value ? (
-                      <input type="text" defaultValue={value.name} />
-                    ) : (
-                      value.name
-                    )}
-                  </td>
-                  <td>
-                    {" "}
-                    {this.state.selected === value ? (
-                      <input type="text" defaultValue={value.surname} />
-                    ) : (
-                      value.surname
-                    )}
-                  </td>
-                  <td>
-                    {" "}
-                    {this.state.selected === value ? (
-                      <input type="text" defaultValue={value.age} />
-                    ) : (
-                      value.age
-                    )}
-                  </td>
-                  <td>
-                    {this.state.selected ? (
-                      <button>save</button>
-                    ) : (
-                      <button
-                        onClick={() => {
-                          onEdit(value);
-                        }}
-                      >
-                        edit
-                      </button>
-                    )}
-
+                    <button onClick={onEdit}>edit</button>
                     <button>delete</button>
                   </td>
                 </tr>
@@ -96,11 +61,10 @@ class State extends Component {
             })}
           </tbody>
         </table>
-        <form action="">
+        <form>
           <input type="text" placeholder="ism kiriting" />
-          <input type="text" placeholder="familya kiriting" />
-          <input type="text" placeholder="yoshni kiriting" />
-          <button>submit</button>
+          <input type="text" placeholder="familiya kiriting" />
+          <input type="text" placeholder="yosh kiriting" />
         </form>
       </div>
     );
