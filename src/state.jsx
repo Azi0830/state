@@ -8,29 +8,32 @@ class State extends Component {
       data: [
         {
           id: "1",
-          name: "azim",
-          surname: "jon",
-          age: "26",
+          name: "a",
+          surname: "a",
+          age: "a",
         },
         {
           id: "2",
-          name: "sardor",
-          surname: "jon",
-          age: "28",
+          name: "b",
+          surname: "b",
+          age: "b",
         },
         {
           id: "3",
-          name: "husan",
-          surname: "khon",
-          age: "25",
+          name: "c",
+          surname: "c",
+          age: "c",
         },
       ],
     };
   }
 
   render() {
-    const onEdit = () => {
-      console.log("editing..");
+    const onEdit = (value) => {
+      const setState = () => {
+        this.state.data;
+      };
+      console.log("edut");
     };
     return (
       <div className="container">
@@ -53,7 +56,13 @@ class State extends Component {
                   <td>{value.surname}</td>
                   <td>{value.age}</td>
                   <td>
-                    <button onClick={onEdit}>edit</button>
+                    <button
+                      onClick={(value) => {
+                        onEdit(value);
+                      }}
+                    >
+                      edit
+                    </button>
                     <button>delete</button>
                   </td>
                 </tr>
@@ -61,14 +70,8 @@ class State extends Component {
             })}
           </tbody>
         </table>
-        <form>
-          <input type="text" placeholder="ism kiriting" />
-          <input type="text" placeholder="familiya kiriting" />
-          <input type="text" placeholder="yosh kiriting" />
-        </form>
       </div>
     );
   }
 }
-
 export default State;
