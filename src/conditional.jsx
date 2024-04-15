@@ -1,32 +1,36 @@
 import { Component } from "react";
+import { Button, Modal } from "antd";
 
 class Con extends Component {
   constructor() {
     super();
     this.state = {
-      theme: "light",
+      isMadal: false,
     };
   }
 
   render() {
-    const swichThere = () => {
-      if (this.state.theme === "dark")
-        this.setState({
-          theme: "light",
-        });
-      else
-        this.setState({
-          theme: "dark",
-        });
-    };
-
     return (
-      <div className={this.state.theme === "light" ? "light" : "dark"}>
-        <h1>hello</h1>
-        {this.state.theme}
-        <button onClick={swichThere}>
-          swich to {this.state.theme === "light" ? "dark" : "light"}
-        </button>
+      <div className="container">
+        <Modal
+          onCancel={() => {
+            this.setState({ isMadal: false });
+          }}
+          title={"menman usha"}
+          open={this.state.isMadal ? true : false}
+        >
+          MODAL
+        </Modal>
+        <Button
+          onClick={() => {
+            this.setState(() => {
+              this.setState({ isMadal: true });
+            });
+          }}
+          type="primary"
+        >
+          Open Modal
+        </Button>
       </div>
     );
   }
