@@ -12,6 +12,7 @@ class Con extends Component {
   render() {
     return (
       <div className="container">
+        {/* <MenuOutlined></MenuOutlined> */}
         <Modal
           onCancel={() => {
             this.setState({ isMadal: false });

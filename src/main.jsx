@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 // import App from "./App";
-import State from "./state";
-import Renshu from "./renshu";
+// import State from "./state";
+// import Renshu from "./renshu";
 import Antd from "./antd";
 import Con from "./conditional";
 
@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* <App /> */}
     {/* <State /> */}
     {/* <Renshu /> */}
-    <Antd />
+    {/* <Antd /> */}
     <Con />
   </React.StrictMode>
 );

@@ -1,52 +1,28 @@
 import { Component } from "react";
+import "./style.css";
 
 class Antd extends Component {
   constructor() {
     super();
     this.state = {
-      person: [
-        {
-          id: 1,
-          name: "jon",
-          age: 26,
-          skill: "react",
-          tags: ["java", "and"],
-        },
-        {
-          id: 2,
-          name: "doe",
-          age: 33,
-          skill: "java",
-          tags: ["java", "vaqachon"],
-        },
-        {
-          id: 3,
-          name: "azi",
-          age: 25,
-          skill: "html",
-          tags: ["javasprimt", "and"],
-        },
-      ],
+      theme: "oq",
     };
   }
   render() {
+    const switchTheme = () => {
+      if (this.state.theme === "oq") {
+        this.setState({ theme: "qora" });
+      } else {
+        this.setState({ theme: "oq" });
+      }
+    };
     return (
-      <div className="container">
-        <h1>jim turing</h1>
-        {this.state.person.map(({ name, age, skill, id, tags }) => {
-          return (
-            <div key={id}>
-              <h1>{name}</h1>
-              <h1>{age}</h1>
-              <h1>{skill}</h1>
-              <h2>
-                {tags.map((value, index) => {
-                  return <div key={index}>{value}</div>;
-                })}
-              </h2>
-            </div>
-          );
-        })}
+      <div className={this.state.theme === "oq" ? "light" : "dark"}>
+        <h1>Mapping</h1>
+        {this.state.theme}
+        <button onClick={switchTheme}>
+          Uzgartirish {this.state.theme === "oq" ? "qora" : "oq"}
+        </button>
       </div>
     );
   }
