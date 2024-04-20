@@ -10,19 +10,19 @@ class Renshu extends Component {
     this.state = {
       data: [
         {
-          id: "1",
+          id: 1,
           name: "azim",
           surname: "jon",
           age: "26",
         },
         {
-          id: "2",
+          id: 2,
           name: "sardor",
           surname: "jon",
           age: "28",
         },
         {
-          id: "3",
+          id: 3,
           name: "husan",
           surname: "khon",
           age: "25",
@@ -34,7 +34,6 @@ class Renshu extends Component {
 
   render() {
     const onEdit = (value) => {
-      console.log(value);
       this.setState({ selectedRow: value });
     };
 
@@ -55,11 +54,9 @@ class Renshu extends Component {
       });
     };
 
-    const deleteSub = () => {
-      // this.setState({
-
-      // });
-      console.log(value);
+    const deleteSub = (value) => {
+      const newData = this.state.data.filter((item) => item.id !== value.id);
+      this.setState({ data: newData });
     };
 
     const onAdd = (event) => {
@@ -68,12 +65,21 @@ class Renshu extends Component {
         name: event.target[0].value,
         surname: event.target[1].value,
         age: event.target[2].value,
-        id: this.state.data.length + 1,
+        id:
+          this.state.data.length > 0
+            ? parseInt(this.state.data[this.state.data.length - 1].id) + 1
+            : 1,
+        // yuqorida yangi muammo bor
       };
       this.setState({
         data: [...this.state.data, newData],
       });
+      //inputni tozalash bu qanday ishlayabdi??
+      event.target[0].value = "";
+      event.target[1].value = "";
+      event.target[2].value = "";
     };
+
     return (
       <div className="container">
         <table border={1}>
@@ -89,7 +95,7 @@ class Renshu extends Component {
           <tbody>
             {this.state.data.map((value) => {
               return (
-                <tr>
+                <tr key={value.id}>
                   <td>{value.id}</td>
                   <td>
                     {this.state.selectedRow &&

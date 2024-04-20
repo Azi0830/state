@@ -38,6 +38,9 @@ class App extends Component {
       });
     };
     const onSave = () => {
+      this.setState({
+        data: {},
+      });
       console.log("save...");
     };
     return (
@@ -53,16 +56,16 @@ class App extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.data.map((value) => {
+            {this.state.data.map((item) => {
               return (
-                <tr key={value.id}>
-                  <td>{value.no}</td>
+                <tr key={item.id}>
+                  <td>{item.no}</td>
                   <td>
                     {this.state.selevtedColum &&
-                    value.id === this.state.selevtedColum.id ? (
+                    item.id === this.state.selevtedColum.id ? (
                       <input
                         type="text"
-                        defaultValue={value.name}
+                        defaultitem={item.name}
                         onChange={(e) => {
                           this.setState({
                             selevtedColum: {
@@ -75,33 +78,59 @@ class App extends Component {
                         }}
                       />
                     ) : (
-                      value.name
+                      item.name
                     )}
                   </td>
                   <td>
                     {this.state.selevtedColum &&
-                    value.id === this.state.selevtedColum.id ? (
-                      <input type="text" defaultValue={value.surname} />
+                    item.id === this.state.selevtedColum.id ? (
+                      <input
+                        type="text"
+                        defaultitem={item.surname}
+                        onChange={(e) => {
+                          this.setState({
+                            selevtedColum: {
+                              name: this.state.selevtedColum.name,
+                              id: this.state.selevtedColum.id,
+                              surname: e.target.value,
+                              age: this.state.selevtedColum.age,
+                            },
+                          });
+                        }}
+                      />
                     ) : (
-                      value.surname
+                      item.surname
                     )}
                   </td>
                   <td>
                     {this.state.selevtedColum &&
-                    value.id === this.state.selevtedColum.id ? (
-                      <input type="text" defaultValue={value.age} />
+                    item.id === this.state.selevtedColum.id ? (
+                      <input
+                        type="text"
+                        defaultValue={item.age}
+                        onChange={(e) => {
+                          this.setState({
+                            selevtedColum: {
+                              name: this.state.selevtedColum.name,
+                              id: this.state.selevtedColum.id,
+                              surname: this.state.selevtedColum.surname,
+                              age: e.target.value,
+                            },
+                          });
+                        }}
+                      />
                     ) : (
-                      value.age
+                      item.age
                     )}
                   </td>
                   <td>
                     {this.state.selevtedColum &&
-                    value.id === this.state.selevtedColum.id ? (
+                    item.id === this.state.selevtedColum.id ? (
                       <button onClick={onSave}>save</button>
                     ) : (
                       <button
                         onClick={() => {
-                          onEdit(value);
+                          onEdit(item);
                         }}
                       >
                         edit

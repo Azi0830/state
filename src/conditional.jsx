@@ -12,25 +12,13 @@ class Con extends Component {
   render() {
     return (
       <div className="container">
-        {/* <MenuOutlined></MenuOutlined> */}
-        <Modal
-          onCancel={() => {
-            this.setState({ isMadal: false });
-          }}
-          title={"menman usha"}
-          open={this.state.isMadal ? true : false}
-        >
-          MODAL
+        <h1>Mapping</h1>
+        <h1>{this.state.isMadal}</h1>
+        <Modal title={"I'm title"} open={false}>
+          <h1>Modal</h1>
         </Modal>
-        <Button
-          onClick={() => {
-            this.setState(() => {
-              this.setState({ isMadal: true });
-            });
-          }}
-          type="primary"
-        >
-          Open Modal
+        <Button onClick={this.setState({ isMadal: true })}>
+          Open to Madal
         </Button>
       </div>
     );
